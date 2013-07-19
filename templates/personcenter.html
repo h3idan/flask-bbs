@@ -1,0 +1,30 @@
+<center>个人中心</center>
+
+
+
+<a href='/person/{{datas.user.username}}'>{{ datas.user.username }}</a>
+<hr />
+<h3>帖子</h3>
+<hr />
+{% for post in datas.posts %}
+<a href='/post/{{ post.id }}'>{{ post.title }}</a>&nbsp;&nbsp;&nbsp;&nbsp;
+<a href='/editpost/{{post.id}}'>编辑</a>
+<a href='/delpost/{{post.id}}'>删除</a>
+{% endfor %}
+
+<hr />
+<h3>个人信息</h3>
+<hr />
+<label>用户名：</label>
+{{ datas.user.username }}
+<label>邮箱：</label>
+{{ datas.user.email }}
+<label>头像：</label>
+<div><img style='width:50px; height:50px;' src='{{ datas.user.pic }}' /></div>
+<form action='/editpic/{{ datas.user.username }}' method="POST" enctype="multipart/form-data" >
+<input type='file' name='pic' />
+
+<input type='submit' value='提交'>
+</form>
+
+

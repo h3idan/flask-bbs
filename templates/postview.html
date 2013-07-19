@@ -1,0 +1,33 @@
+
+
+<center>论坛首页</center>
+<hr />
+
+{% if session.username %}
+<a href='/person/{{session.username}}'>{{ session.username }}</a>
+<a href='/logout'>logout</a>
+<hr />
+<a href='/publish'>发帖</a>
+{% else %}
+<a href='/login'>登录</a>
+<a href='/registerpage'>注册</a>
+{% endif %}
+
+<hr />
+
+<h3>帖子</h3>
+<hr />
+{% for data in datas.posts %}
+    <span style='display: none'><label>编号: </label>{{ data.id }}</span>
+    <label>标题: </label><span><a href='/post/{{data.id}}'>{{ data.title }}</a></span>
+    <a href='/editpost/{{data.id}}'>编辑</a>
+    <a href='/delpost/{{data.id}}'>删除</a>
+    <br />
+    <label>作者: </label><span><a href='/person/{{data.author}}'>{{ data.author }}</a></span>
+    <br />
+    <label>内容: </label><span>{{ data.details }}</span>
+    <hr />
+{% endfor %}
+
+
+

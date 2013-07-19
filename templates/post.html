@@ -1,0 +1,51 @@
+<center>flaskbbs</center>
+
+<hr />
+
+
+<a href='#'>{{ session.username }}</a>
+<a href='/logout'>logout</a>
+<a href='/'>返回首页</a>
+<hr />
+<br />
+<h3>帖子</h3>
+<label>标题: </label>
+{{datas.post.title}}
+<br />
+<br />
+<label>作者: </label>
+{{ datas.post.author }}
+<br />
+<br />
+<label>内容: </label>
+{{datas.post.details}}
+<br />
+<hr />
+<h3>回复</h3>
+<hr />
+{% for reply in datas.replys %}
+<pre>
+{{ reply.author }}回复：
+
+           {{ reply.details }}
+</pre>
+<hr />
+{% endfor %}
+
+<form action='/reply/{{ datas.post.id }}' method='POST'>
+    
+    <label>内容: </label>
+    <textarea name='details' value='{{datas.post.details}}'> </textarea>
+    <input type='submit' value='回复' />
+
+</form>
+
+
+
+
+
+
+
+
+
+

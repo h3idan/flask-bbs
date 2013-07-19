@@ -1,0 +1,35 @@
+<center>发帖</center>
+
+<hr />
+
+
+{% if session.username %}
+<a href='#'>{{ session.username }}</a>
+<a href='/logout'>logout</a>
+<hr />
+{% else %}
+<a href='/login'>登录</a>
+<a href='/registerpage'>注册</a>
+{% endif %}
+
+<br />
+<br />
+<form action='/publish' method='POST'>
+
+<label>标题: </label>
+<input type="text" name='title' />
+<br />
+<br />
+<label>作者: </label>
+<input type="text" name='author' readonly='readonly' value='{{ session.username }}' />
+<br />
+<br />
+<label>内容: </label>
+<textarea name='details'> </textarea>
+<br />
+<hr />
+
+<input type='submit' value='发帖' />
+
+</form>
+<a href='/'><button>取消</button></a>

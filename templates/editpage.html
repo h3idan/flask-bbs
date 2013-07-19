@@ -1,0 +1,30 @@
+<center>编辑</center>
+
+<hr />
+
+
+<a href='#'>{{ session.username }}</a>
+<a href='/logout'>logout</a>
+<hr />
+
+<br />
+<br />
+<form action='/edit/{{ datas.post.id }}' method='POST'>
+
+<label>标题: </label>
+<input type="text" name='title' value='{{datas.post.title}}' />
+<br />
+<br />
+<label>作者: </label>
+<input type="text" name='author' readonly='readonly' value='{{ datas.post.author }}' />
+<br />
+<br />
+<label>内容: </label>
+<textarea name='details' value='{{datas.post.details}}'> </textarea>
+<br />
+<hr />
+
+<input type='submit' value='修改' />
+
+</form>
+<a href='/'><button>取消</button></a>
