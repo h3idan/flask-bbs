@@ -41,7 +41,7 @@ class Post(db.Model):
     title = db.Column(db.String(100), nullable=True, default='')
     details = db.Column(db.Text, nullable=True, default='')
     author = db.Column(db.String(30), db.ForeignKey('user.username'))
- #   replys = db.relationship('Reply', backref='post', lazy='danamic')
+    replys = db.relationship('Reply', backref='post', lazy='danamic')
 
     def __init__(self, title, author, details):
         self.title = title
